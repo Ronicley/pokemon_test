@@ -6,6 +6,7 @@ import * as Style from "./styled";
 
 import ashFront from '../../assets/images/ashFront.png'
 import searchTooltip from '../../assets/images/searchTooltip.png'
+import Modal from "../../components/Modal";
 
 const MapPage = () => {
   const [showTip, setShowTip] = useState(false)
@@ -16,6 +17,8 @@ const MapPage = () => {
 
   return (
     <Style.MapWrapper className="map">
+
+      <Modal/>
 
       <Style.ModalAvatar>
         {

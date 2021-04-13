@@ -5,9 +5,16 @@ import * as Style from "./styled";
 const Modal = () => {
 
   return (
-    <Style.ModalContent>
-      Text
-    </Style.ModalContent>
+    <Style.Container>
+      <Style.ModalBody>
+        <Style.ModalHeader>
+          <h1>Cabeça</h1>
+        </Style.ModalHeader>
+        <Style.ModalContent>
+          <p>Corpo</p>
+        </Style.ModalContent>
+      </Style.ModalBody>
+    </Style.Container>
   )
 };
 

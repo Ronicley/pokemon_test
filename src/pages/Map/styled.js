@@ -18,7 +18,7 @@ export const ModalAvatar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99999;
+  z-index: 2;
   position: fixed;
   margin-bottom:150px;
 `
