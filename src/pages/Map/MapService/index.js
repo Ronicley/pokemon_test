@@ -6,7 +6,7 @@ const getRndInteger = () => {
 
 export const getRandomicPokemon = async () => {
   try{
-    return await axios.get(`pokmon/${getRndInteger()}`);
+    return await axios.get(`pokemon/${getRndInteger()}`);
   }catch (e){
     console.error(e)
   }
