@@ -30,25 +30,25 @@ export const ModalHeader = styled.div`
 export const ModalBody = styled.div`
   position: relative;
   background: linear-gradient(90deg, #43E97B 0%, #38F9D7 100%);
-  height: 60vh;
-  width: 40vh;
+  height: 559px;
+  width: 360px;
   z-index: 999;
   flex-flow: column;
   justify-content: space-between;
   align-items: center;
   display: flex;
-  border-radius: 3%;
+  border-radius: 8px;
 `;
 
 export const ModalContent = styled.div`
   position: relative;
   height: 70%;
-  background: white;
   width: 100%;
+  background: #F7F9FC;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10% 10% 3% 3%;
+  border-radius: 24px 24px 8px 8px;
 `;
 
 export const CloseButton = styled.img`
@@ -60,5 +60,5 @@ export const CloseButton = styled.img`
   height: 38px;
   background-color: white;
   padding: 9.5px;
-  border:2px #8F9BB3 solid;
+  border: 2px #8F9BB3 solid;
 `;

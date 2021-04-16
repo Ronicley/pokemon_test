@@ -44,7 +44,16 @@ const MapPage = () => {
           </>
         }
         body={
-          pokemon.stats&&<Features height={pokemon.height} hp={pokemon.stats[0].base_stat} weight={pokemon.weight}/>
+          pokemon.stats && (
+            <Features
+              height={pokemon.height}
+              hp={pokemon.stats[0].base_stat}
+              weight={pokemon.weight}
+              name={pokemon.name}
+              abilities={pokemon.abilities}
+              types={pokemon.types}
+            />
+          )
         }
         open={true}
       />
