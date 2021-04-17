@@ -41,3 +41,8 @@ export const SideBarItem = styled.li`
         margin-bottom: 1.6rem;
     }
 `;
+
+export const PokemonImg = styled.img`
+  width: 6.3rem;
+  height: 6.3rem;
+`;

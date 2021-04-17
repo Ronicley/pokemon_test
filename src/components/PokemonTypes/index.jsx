@@ -19,8 +19,8 @@ const Types = ({ type }) => {
         <Style.Box>
             {pokemonType &&
                 pokemonType.map((item, index) => (
-                    <Style.Type key={index} color={item.color}>
-                        {item.name}
+                    <Style.Type key={index} color={item?.color}>
+                        {item?.name}
                     </Style.Type>
                 ))}
         </Style.Box>

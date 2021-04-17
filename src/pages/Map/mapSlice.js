@@ -3,17 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export const mapSlice = createSlice({
   name: "map",
   initialState: {
-    itemEdited: {},
+    pokemonCaptured: null,
   },
   reducers: {
-    setItemEdited: (state, action) => {
-      state.itemEdited = action.payload;
+    setPokemonCaptured: (state, action) => {
+      state.pokemonCaptured = action.payload;
     },
   },
 });
 
-export const { setItemEdited } = mapSlice.actions;
+export const { setPokemonCaptured } = mapSlice.actions;
 
-export const selectItemEdited = state => state.map.itemEdited;
+export const selectPokemonCaptured = state => state.map.pokemonCaptured;
 
 export default mapSlice.reducer;

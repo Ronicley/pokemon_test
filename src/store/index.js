@@ -3,6 +3,6 @@ import mapReducer from "../pages/Map/mapSlice";
 
 export default configureStore({
   reducer: {
-    character: mapReducer,
+    map: mapReducer,
   },
 });

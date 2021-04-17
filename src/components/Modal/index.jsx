@@ -7,11 +7,14 @@ import pokeball from "../../assets/images/pokeball.png";
 import Features from "../features";
 import {getRandomicPokemon} from "../../pages/Map/MapService";
 import Loading from "../Loading";
+import {useDispatch} from "react-redux";
+import {setPokemonCaptured} from "../../pages/Map/mapSlice";
 
 // eslint-disable-next-line react/prop-types
 const Modal = ({open = false, onClose}) => {
   const [pokemon, setPokemon] = useState({});
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const getPokemon = async () => {
     setLoading(true);
@@ -25,7 +28,7 @@ const Modal = ({open = false, onClose}) => {
   };
 
   const handleCapturePokemon = () => {
-
+    dispatch(setPokemonCaptured(pokemon));
   };
 
   useEffect(() => {
@@ -71,7 +74,10 @@ const Modal = ({open = false, onClose}) => {
               <Style.PokeballContaier>
                 <Button
                   icon={pokeball}
-                  onClick={handleCapturePokemon}
+                  onClick={() => {
+                    handleCapturePokemon();
+                    onClose();
+                  }}
                 />
               </Style.PokeballContaier>
             </Style.ModalBody>
