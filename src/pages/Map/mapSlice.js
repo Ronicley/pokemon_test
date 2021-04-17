@@ -12,7 +12,7 @@ export const mapSlice = createSlice({
   },
 });
 
-export const { setItemEdited, setMapId } = mapSlice.actions;
+export const { setItemEdited } = mapSlice.actions;
 
 export const selectItemEdited = state => state.map.itemEdited;
 
