@@ -13,11 +13,12 @@ const Modal = ({ open = false, onClose }) => {
 
     const getPokemon = async () => {
         let { data } = await getRandomicPokemon();
-        console.log(data);
         setPokemon(data);
     };
 
-    const handleCapturePokemon = () => {};
+    const handleCapturePokemon = () => {
+
+    };
 
     useEffect(() => {
         if (open) {
