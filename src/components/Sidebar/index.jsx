@@ -5,17 +5,20 @@ import Button from "components/Button";
 import iconPlus from "assets/images/plus.png";
 
 import * as S from "./styled";
-import {selectPokemonCaptured} from "../../pages/Map/mapSlice";
-import {useSelector} from "react-redux";
+import {selectPokemonCaptured, setMaxAmountPokemon} from "../../pages/Map/mapSlice";
+import {useDispatch, useSelector} from "react-redux";
 
 const Sidebar = () => {
   const [capturedPokemons, setCapturedPokemons] = useState([]);
   const pokemon = useSelector(selectPokemonCaptured);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(pokemon);
     if (capturedPokemons.length < 6) {
       if (pokemon !== null) setCapturedPokemons([...capturedPokemons, pokemon]);
+    } else {
+      console.log("e");
+      dispatch(setMaxAmountPokemon(true));
     }
   }, [pokemon]);
 
@@ -33,12 +36,8 @@ const Sidebar = () => {
                 </S.SideBarItem>
               );
             })
-
-
           )
         }
-
-
       </S.SideBarList>
 
       <Button icon={iconPlus}/>
