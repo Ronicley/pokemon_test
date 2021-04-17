@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const SideBarWrapper = styled.aside`
-  background-color: transparent;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  flex-direction: column;
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const SideBarList = styled.ul`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const SideBarItem = styled.li`
@@ -26,7 +26,7 @@ export const SideBarItem = styled.li`
     font-weight: bold;
     color: #004a45;
     cursor: pointer;
-    transition: all .2s;
+    transition: all 0.2s;
     background-color: #00d68f;
     background-position: center;
     background-repeat: no-repeat;

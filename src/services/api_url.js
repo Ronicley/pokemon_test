@@ -1,3 +1,3 @@
-const apiUrl = "https://pokeapi.co/api/v2/"
+const apiUrl = "https://pokeapi.co/api/v2/";
 
-export default apiUrl
+export default apiUrl;
