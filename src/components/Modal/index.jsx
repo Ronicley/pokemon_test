@@ -8,12 +8,17 @@ import Features from "../features";
 import {getRandomicPokemon} from "../../pages/Map/MapService";
 import Loading from "../Loading";
 import {useDispatch, useSelector} from "react-redux";
-import {selectMaxAmountPokemonsReached, setPokemonCaptured} from "../../pages/Map/mapSlice";
+import {
+  selectMaxAmountPokemonsReached,
+  setPokemonCaptured,
+  selectPokemonCapturedDetails
+} from "../../pages/Map/mapSlice";
 import {useAlert} from "react-alert";
 
 // eslint-disable-next-line react/prop-types
 const Modal = ({open = false, onClose}) => {
   const pokemonFull = useSelector(selectMaxAmountPokemonsReached);
+  const pokemonDetails = useSelector(selectPokemonCapturedDetails);
   const [pokemon, setPokemon] = useState({});
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -36,7 +41,13 @@ const Modal = ({open = false, onClose}) => {
 
   useEffect(() => {
     if (open) {
-      getPokemon().then();
+      console.log(pokemonDetails);
+      if (pokemonDetails) {
+        setPokemon(pokemonDetails);
+      } else {
+        getPokemon().then();
+      }
+
     }
   }, [open]);
 
@@ -78,10 +89,10 @@ const Modal = ({open = false, onClose}) => {
                 <Button
                   icon={pokeball}
                   onClick={() => {
-                    if(!pokemonFull){
+                    if (!pokemonFull) {
                       handleCapturePokemon();
                       onClose();
-                    }else{
+                    } else {
                       alert.info("Quantidade máxima de pokemons atinginda");
                     }
                   }}

@@ -5,7 +5,7 @@ import Button from "components/Button";
 import iconPlus from "assets/images/plus.png";
 
 import * as S from "./styled";
-import {selectPokemonCaptured, setMaxAmountPokemon} from "../../pages/Map/mapSlice";
+import {selectPokemonCaptured, setMaxAmountPokemon, setPokemonCapturedDetails} from "../../pages/Map/mapSlice";
 import {useDispatch, useSelector} from "react-redux";
 
 const Sidebar = () => {
@@ -13,11 +13,13 @@ const Sidebar = () => {
   const pokemon = useSelector(selectPokemonCaptured);
   const dispatch = useDispatch();
 
+  const handleSetPokemonDetails = (pokemon) => dispatch(setPokemonCapturedDetails(pokemon));
+
   useEffect(() => {
+    console.log(pokemon);
     if (capturedPokemons.length < 6) {
       if (pokemon !== null) setCapturedPokemons([...capturedPokemons, pokemon]);
     } else {
-      console.log("e");
       dispatch(setMaxAmountPokemon(true));
     }
   }, [pokemon]);
@@ -31,7 +33,7 @@ const Sidebar = () => {
           ) : (
             capturedPokemons.map((item, index) => {
               return (
-                <S.SideBarItem key={index}>
+                <S.SideBarItem key={index} onClick={() => handleSetPokemonDetails(item)}>
                   <S.PokemonImg src={item?.sprites?.front_default} alt="Pokemon captured"/>
                 </S.SideBarItem>
               );

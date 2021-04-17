@@ -4,7 +4,8 @@ export const mapSlice = createSlice({
   name: "map",
   initialState: {
     pokemonCaptured: null,
-    maxAmountPokemonsReached: false
+    maxAmountPokemonsReached: false,
+    pokemonCapturedDetails: null,
   },
   reducers: {
     setPokemonCaptured: (state, action) => {
@@ -12,14 +13,19 @@ export const mapSlice = createSlice({
     },
     setMaxAmountPokemon: (state, action) => {
       state.maxAmountPokemonsReached = action.payload;
+    },
+    setPokemonCapturedDetails: (state, action) => {
+      state.pokemonCapturedDetails = action.payload;
     }
   },
 });
 
-export const {setPokemonCaptured, setMaxAmountPokemon} = mapSlice.actions;
+export const {setPokemonCaptured, setMaxAmountPokemon, setPokemonCapturedDetails} = mapSlice.actions;
 
 export const selectPokemonCaptured = state => state.map.pokemonCaptured;
 
 export const selectMaxAmountPokemonsReached = state => state.map.maxAmountPokemonsReached;
+
+export const selectPokemonCapturedDetails = state => state.map.pokemonCapturedDetails;
 
 export default mapSlice.reducer;

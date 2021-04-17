@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 
 import Sidebar from "components/Sidebar";
 
@@ -7,39 +7,51 @@ import * as Style from "./styled";
 import ashFront from "../../assets/images/ashFront.png";
 import searchTooltip from "../../assets/images/searchTooltip.png";
 import Modal from "../../components/Modal";
+import {useDispatch, useSelector} from "react-redux";
+// eslint-disable-next-line no-unused-vars
+import {selectPokemonCapturedDetails, setPokemonCapturedDetails} from "./mapSlice";
 
 const MapPage = () => {
-    const [showTip, setShowTip] = useState(false);
+  const [showTip, setShowTip] = useState(false);
+  const pokemonDetails = useSelector(selectPokemonCapturedDetails);
+  const [openModal, setOpenModal] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const dispatch = useDispatch();
 
-    const [openModal, setOpenModal] = useState(false);
+  const openTip = () => setShowTip(true);
 
-    const openTip = () => setShowTip(true);
+  const closeTip = () => setShowTip(false);
 
-    const closeTip = () => setShowTip(false);
+  const handleOpenModal = () => setOpenModal(true);
 
-    const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
-    const handleCloseModal = () => setOpenModal(false);
+  useEffect(() => {
+    if (pokemonDetails) {
+      handleOpenModal();
+    }
 
-    return (
-        <Style.MapWrapper className="map">
-            <Modal open={openModal} onClose={handleCloseModal} />
+  }, [pokemonDetails]);
 
-            <Style.ModalAvatar>
-                {showTip && <img src={searchTooltip} alt="search tooltip" />}
-            </Style.ModalAvatar>
+  return (
+    <Style.MapWrapper className="map">
+      <Modal open={openModal} onClose={handleCloseModal}/>
 
-            <img
-                onMouseEnter={openTip}
-                onMouseLeave={closeTip}
-                onClick={handleOpenModal}
-                src={ashFront}
-                alt="Ash"
-            />
+      <Style.ModalAvatar>
+        {showTip && <img src={searchTooltip} alt="search tooltip"/>}
+      </Style.ModalAvatar>
 
-            <Sidebar />
-        </Style.MapWrapper>
-    );
+      <img
+        onMouseEnter={openTip}
+        onMouseLeave={closeTip}
+        onClick={handleOpenModal}
+        src={ashFront}
+        alt="Ash"
+      />
+
+      <Sidebar/>
+    </Style.MapWrapper>
+  );
 };
 
 export default MapPage;
