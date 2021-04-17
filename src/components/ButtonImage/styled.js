@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const ButtonWrapper = styled.button`
     position: relative;
@@ -12,9 +12,9 @@ export const ButtonWrapper = styled.button`
     text-transform: uppercase;
     border: none;
     background-color: transparent;
-`
+`;
 
-export const Icon = styled.img``
+export const Icon = styled.img``;
 
 export const IconPlus = styled.img`
     position: absolute;
@@ -26,6 +26,6 @@ export const IconPlus = styled.img`
     bottom: -6px;
     right: -11px;
     border: 3px white solid;
-`
+`;
 
-export const Text = styled.span``
+export const Text = styled.span``;

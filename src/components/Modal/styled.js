@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     position: fixed;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     background: rgba(0, 0, 0, 0.35);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+    z-index: 99999999;
 `;
 
 export const ModalHeader = styled.div`
@@ -66,7 +66,7 @@ export const CloseButton = styled.img`
     border: 2px #8f9bb3 solid;
 `;
 
-export const PokeballContaier = styled.div`
+export const ActionsContainer = styled.div`
     z-index: 111111111;
     bottom: 15px;
     position: sticky;

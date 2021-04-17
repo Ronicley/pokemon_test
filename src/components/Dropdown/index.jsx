@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
 
-import chevron from 'assets/images/chevronDownBlack.png'
+import chevron from "assets/images/chevronDownBlack.png";
 
-import * as S from './styled'
+import * as S from "./styled";
 
+// eslint-disable-next-line react/prop-types
 const DropdownPage = ({ label, options }) => (
     <S.DropdownWrapper>
         {label && <S.Label>{label}</S.Label>}
@@ -14,6 +15,7 @@ const DropdownPage = ({ label, options }) => (
                     Selecione o(s) tipo(s)
                 </S.DropdownOption>
                 {options &&
+                // eslint-disable-next-line react/prop-types
                     options.map((option, index) => (
                         <S.DropdownOption key={index} value={option.value}>
                             {option.text}
@@ -23,6 +25,6 @@ const DropdownPage = ({ label, options }) => (
             <S.DropdownIcon src={chevron} alt="Chevron" />
         </S.DropdownContent>
     </S.DropdownWrapper>
-)
+);
 
-export default DropdownPage
+export default DropdownPage;

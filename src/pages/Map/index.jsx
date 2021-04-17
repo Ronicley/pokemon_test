@@ -1,41 +1,118 @@
 import React, {useEffect, useState} from "react";
-
 import Sidebar from "components/Sidebar";
-
 import * as Style from "./styled";
-
 import ashFront from "../../assets/images/ashFront.png";
 import searchTooltip from "../../assets/images/searchTooltip.png";
 import Modal from "../../components/Modal";
 import {useDispatch, useSelector} from "react-redux";
-// eslint-disable-next-line no-unused-vars
-import {selectPokemonCapturedDetails, setPokemonCapturedDetails} from "./mapSlice";
+import {
+  selectPokemonCapturedDetails,
+  setPokemonCaptured,
+  selectMaxAmountPokemonsReached,
+  setPokemonCapturedDetails
+} from "./mapSlice";
+import {getRandomicPokemon} from "./MapService";
+import {useAlert} from "react-alert";
+import Features from "../../components/features";
+import pokeball from "../../assets/images/pokeball.png";
+import Button from "../../components/Button";
 
 const MapPage = () => {
   const [showTip, setShowTip] = useState(false);
-  const pokemonDetails = useSelector(selectPokemonCapturedDetails);
   const [openModal, setOpenModal] = useState(false);
-  // eslint-disable-next-line no-unused-vars
+  const [loading, setLoading] = useState(false);
+  const [pokemon, setPokemon] = useState({});
+
+  const alert = useAlert();
   const dispatch = useDispatch();
+  const pokemonDetails = useSelector(selectPokemonCapturedDetails);
+  const pokemonFull = useSelector(selectMaxAmountPokemonsReached);
+
+  const handleCapturePokemon = () => {
+    pokemon.captured = true;
+    dispatch(setPokemonCaptured(pokemon));
+  };
 
   const openTip = () => setShowTip(true);
 
   const closeTip = () => setShowTip(false);
 
+  const handleGetPokemon = async () => {
+    await getPokemon();
+    handleOpenModal();
+  };
+
   const handleOpenModal = () => setOpenModal(true);
 
   const handleCloseModal = () => setOpenModal(false);
 
+  const getPokemon = async () => {
+    setLoading(true);
+    try {
+      let {data} = await getRandomicPokemon();
+      setPokemon(data);
+    } catch (e) {
+      console.error(e);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
     if (pokemonDetails) {
       handleOpenModal();
+      setPokemon(pokemonDetails);
     }
-
   }, [pokemonDetails]);
+
+  useEffect(() => {
+    if (!openModal) {
+      dispatch(setPokemonCapturedDetails(null));
+    }
+  }, [openModal]);
 
   return (
     <Style.MapWrapper className="map">
-      <Modal open={openModal} onClose={handleCloseModal}/>
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        loading={loading}
+        img={
+          pokemon?.sprites && (
+            <img
+              src={pokemon?.sprites?.front_default}
+              width={200}
+              alt="Pokemon Sprite"
+            />
+          )
+        }
+        body={
+          pokemon.stats && (
+            <Features
+              height={pokemon.height}
+              hp={pokemon.stats[0].base_stat}
+              weight={pokemon.weight}
+              name={pokemon.name}
+              abilities={pokemon.abilities}
+              types={pokemon.types}
+            />
+          )
+        }
+        actions={
+          <Button
+            icon={pokeball}
+            onClick={
+              () => {
+                if (!pokemonFull) {
+                  handleCapturePokemon();
+                  handleCloseModal();
+                } else {
+                  alert.info("Quantidade máxima de pokemons atinginda");
+                }
+              }
+            }
+          />
+        }
+      />
 
       <Style.ModalAvatar>
         {showTip && <img src={searchTooltip} alt="search tooltip"/>}
@@ -44,7 +121,7 @@ const MapPage = () => {
       <img
         onMouseEnter={openTip}
         onMouseLeave={closeTip}
-        onClick={handleOpenModal}
+        onClick={handleGetPokemon}
         src={ashFront}
         alt="Ash"
       />

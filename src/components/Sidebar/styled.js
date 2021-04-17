@@ -9,6 +9,13 @@ export const SideBarWrapper = styled.aside`
     flex-direction: column;
 `;
 
+export const ModalWrapper = styled.aside`   
+    position: absolute;
+    top: -20px;
+    left: -20px;   
+`;
+
+
 export const SideBarList = styled.ul`
     display: flex;
     flex-direction: column;

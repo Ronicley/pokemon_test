@@ -1,29 +1,27 @@
-import React from 'react'
+import React from "react";
 
-import chevron from 'assets/images/chevronDownBlack.png'
 
-import * as S from './styled'
+import * as S from "./styled";
 
-const InputNumber = ({ className, label, placeholder, name, suffix }) => (
+// eslint-disable-next-line react/prop-types
+const InputNumber = ({ className, label, placeholder, name, suffix, onChange, value, onBlur }) => (
     <S.InputNumberWrapper className={className}>
         {label && <S.Label>{label}</S.Label>}
 
         <S.InputContent>
             <S.Input
-                value=""
+                value={value}
                 type="number"
                 placeholder={placeholder}
                 name={name}
+                onChange={onChange}
+                onBlur={onBlur}
             />
 
             {suffix && <S.InputSuffix>{suffix}</S.InputSuffix>}
 
-            <S.InputActions>
-                <S.Arrow src={chevron} className="increase" alt="Mais" />
-                <S.Arrow src={chevron} className="decrease" alt="Menos" />
-            </S.InputActions>
         </S.InputContent>
     </S.InputNumberWrapper>
-)
+);
 
-export default InputNumber
+export default InputNumber;
