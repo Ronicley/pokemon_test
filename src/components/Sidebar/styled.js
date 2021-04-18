@@ -123,6 +123,7 @@ export const SectionAbility = styled.h3`
 
 
 export const Form = styled.form`
+  position: relative;
   width: 100%;
   margin: 130px 20px 0 20px;
 `;

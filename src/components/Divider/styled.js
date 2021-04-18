@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  ${props => props.position !== null ? `position: ${props.position};` : ""}
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-color: #f7f9fc;
- 
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 export const Content = styled.div`

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import dictionaryPokemonTypes from "./dictiorany";
 import * as Style from "./styled";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 const Types = ({ type }) => {
     const [pokemonType, setPokemonType] = useState([]);
 
     useEffect(() => {
         let arr = [];
-        // eslint-disable-next-line react/prop-types
+
         type.forEach((item) => {
             arr.push(dictionaryPokemonTypes[`${item.type.name}`]);
         });
+
         setPokemonType(arr);
     }, [type]);
 
@@ -25,6 +26,10 @@ const Types = ({ type }) => {
                 ))}
         </Style.Box>
     );
+};
+
+Types.propTypes = {
+    type: PropTypes.array
 };
 
 export default Types;
