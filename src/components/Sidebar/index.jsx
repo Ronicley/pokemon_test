@@ -87,7 +87,8 @@ const Sidebar = () => {
                   isSubmitting,
                   /* and other goodies */
                 }) => (
-                <form onSubmit={handleSubmit}>
+                <S.Form onSubmit={handleSubmit}>
+
                   <InputText
                     type="text"
                     name="name"
@@ -97,6 +98,7 @@ const Sidebar = () => {
                     value={values.name}
                   />
                   {errors.name && touched.name && errors.name}
+
                   <InputNumber
                     name="hp"
                     label="HP"
@@ -105,18 +107,32 @@ const Sidebar = () => {
                     value={values.hp}
                   />
                   {errors.hp && touched.hp && errors.hp}
+
                   <InputNumber
-                    type="password"
-                    name="password"
+                    label="PESO"
+                    name="peso"
+                    suffix="Kg"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.password}
+                    value={values.peso}
                   />
-                  {errors.password && touched.password && errors.password}
+                  {errors.peso && touched.peso && errors.peso}
+
+                  <InputNumber
+                    label="ALTURA"
+                    name="altura"
+                    suffix="Cm"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.altura}
+                  />
+                  {errors.altura && touched.altura && errors.altura}
+                  <S.SectionTitle>TIPO</S.SectionTitle>
+                  <S.SectionAbility>HABILIDADES</S.SectionAbility>
                   <button type="submit" disabled={isSubmitting}>
                     Submit
                   </button>
-                </form>
+                </S.Form>
               )}
             </Formik>
           }

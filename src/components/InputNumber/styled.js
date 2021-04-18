@@ -41,13 +41,8 @@ export const Input = styled.input`
         font-weight: 400;
     }
 
-    &[type='number'] {
-        -moz-appearance: textfield;
-    }
-
     &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
+    &::-webkit-inner-spin-button {       
         margin: 0;
     }
 `;
@@ -88,3 +83,4 @@ export const Arrow = styled.img`
         transform: rotate(180deg);
     }
 `;
+
