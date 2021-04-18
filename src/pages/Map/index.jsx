@@ -9,7 +9,8 @@ import {
   selectPokemonCapturedDetails,
   setPokemonCapturedDetails,
   selectPokemonList,
-  setPokemonList
+  setPokemonList,
+  removePokemonFromList
 } from "./mapSlice";
 import {getRandomicPokemon} from "./MapService";
 import {useAlert} from "react-alert";
@@ -57,6 +58,11 @@ const MapPage = () => {
     setLoading(false);
   };
 
+  const handleLiberatePokemon = () => {
+    dispatch(removePokemonFromList({id: pokemonDetails.id}));
+    handleCloseModal();
+  };
+
   useEffect(() => {
     if (pokemonDetails) {
       handleOpenModal();
@@ -100,19 +106,27 @@ const MapPage = () => {
           )
         }
         actions={
-          <Button
-            icon={pokeball}
-            onClick={
-              () => {
-                if (pokemonList.length <= 5) {
-                  handleCapturePokemon();
-                  handleCloseModal();
-                } else {
-                  alert.info("Quantidade máxima de pokemons atinginda");
+          pokemonDetails ? (
+            <Button
+              text="Liberar pokemon"
+              onClick={handleLiberatePokemon}
+            />
+          ) : (
+            <Button
+              icon={pokeball}
+              onClick={
+                () => {
+                  if (pokemonList.length <= 5) {
+                    handleCapturePokemon();
+                    handleCloseModal();
+                  } else {
+                    alert.info("Quantidade máxima de pokemons atinginda");
+                  }
                 }
               }
-            }
-          />
+            />
+          )
+
         }
       />
 

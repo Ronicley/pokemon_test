@@ -11,7 +11,8 @@ export const mapSlice = createSlice({
       state.pokemonList.push(action.payload);
     },
     removePokemonFromList: (state, action) => {
-      state.pokemonList = state.pokemonList.filter((item) => item.id !== action.payload);
+      console.log(action);
+      state.pokemonList = state.pokemonList.filter((item) => item.id !== action.payload.id);
     },
     updatePokemonName: (state, action) => {
       let {pokemonName, id} = action.payload;
