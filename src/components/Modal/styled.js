@@ -45,6 +45,7 @@ export const ModalBody = styled.div`
 `;
 
 export const ModalContent = styled.div`
+    margin-bottom: -80px;
     position: relative;
     width: 100%;
     background: #f7f9fc;
@@ -67,7 +68,6 @@ export const CloseButton = styled.img`
 `;
 
 export const ActionsContainer = styled.div`
-    z-index: 111111111;
-    bottom: 15px;
-    position: sticky;
+    position:sticky;
+    bottom: 15px;   
 `;
