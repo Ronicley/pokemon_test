@@ -15,7 +15,6 @@ export const ModalWrapper = styled.aside`
   left: -20px;
 `;
 
-
 export const SideBarList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -89,41 +88,60 @@ export const SectionTitle = styled.h3`
 
 
 export const SectionAbility = styled.h3`
-    background-color: #f7f9fc;
-    padding: 0 12px;
-    position: relative;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 15px;
-    text-align: center;
-    color: #2e3a59;
+  background-color: #f7f9fc;
+  padding: 0 12px;
+  position: relative;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  color: #2e3a59;
 
-    &:before {
-        content: '';
-        height: 0.5px;
-        width: 92.5px;
-        background-color: #c5cee0;
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateX(-100%);
-    }
+  &:before {
+    content: '';
+    height: 0.5px;
+    width: 92.5px;
+    background-color: #c5cee0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateX(-100%);
+  }
 
-    &:after {
-        content: '';
-        height: 0.5px;
-        width: 92.5px;
-        background-color: #c5cee0;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateX(100%);
-    }
+  &:after {
+    content: '';
+    height: 0.5px;
+    width: 92.5px;
+    background-color: #c5cee0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateX(100%);
+  }
 `;
-
 
 export const Form = styled.form`
   position: relative;
   width: 100%;
   margin: 130px 20px 0 20px;
+`;
+
+export const LabelContent = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #2E3A59;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 `;

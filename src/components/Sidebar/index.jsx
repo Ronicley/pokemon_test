@@ -17,6 +17,10 @@ import InputNumber from "../InputNumber";
 import Divider from "../Divider";
 import DropdownPage from "../Dropdown";
 import dictionaryPokemonTypes from "../PokemonTypes/dictiorany";
+import shield from "../../assets/images/shield.png";
+import speed from "../../assets/images/speed.png";
+import sword from "../../assets/images/sword.png";
+
 
 const Sidebar = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -159,9 +163,132 @@ const Sidebar = () => {
 
                   <Divider text={"HABILIDADES"}/>
 
-                  <button type="submit" disabled={isSubmitting}>
-                    Submit
-                  </button>
+                  <InputText
+                    type="text"
+                    name="firstAbility"
+                    label="HABILIDADE 1"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.firstAbility}
+                  />
+                  {errors.firstAbility && touched.firstAbility && errors.firstAbility}
+
+                  <InputText
+                    type="text"
+                    name="secondAbility"
+                    label="HABILIDADE 2"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.secondAbility}
+                  />
+                  {errors.secondAbility && touched.secondAbility && errors.secondAbility}
+
+                  <InputText
+                    type="text"
+                    name="thirdAbility"
+                    label="HABILIDADE 3"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.thirdAbility}
+                  />
+                  {errors.thirdAbility && touched.thirdAbility && errors.thirdAbility}
+
+                  <InputText
+                    type="text"
+                    name="fourthAbility"
+                    label="HABILIDADE 4"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.fourthAbility}
+                  />
+                  {errors.fourthAbility && touched.fourthAbility && errors.fourthAbility}
+
+                  <Divider text={"ESTATÍSTICAS"}/>
+
+                  <InputNumber
+                    label={
+                      <S.LabelContent>
+                        <img src={shield} alt="Escudo"/>
+                        &nbsp;DEFESA
+                      </S.LabelContent>
+                    }
+                    name="high"
+                    placeholder={"00"}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.high}
+                  />
+                  {errors.high && touched.high && errors.high}
+
+                  <InputNumber
+                    label={
+                      <S.LabelContent>
+                        <img src={sword} alt="Espada"/>
+                        &nbsp;ATAQUE
+                      </S.LabelContent>
+                    }
+                    name="high"
+                    placeholder={"00"}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.high}
+                  />
+                  {errors.high && touched.high && errors.high}
+
+                  <InputNumber
+                    label={
+                      <S.LabelContent>
+                        <img src={shield} alt="Escudo"/>
+                        &nbsp;DESFESA ESPECIAL
+                      </S.LabelContent>
+                    }
+                    name="high"
+                    placeholder={"00"}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.high}
+                  />
+                  {errors.high && touched.high && errors.high}
+
+                  <InputNumber
+                    label={
+                      <S.LabelContent>
+                        <img src={sword} alt="Espada"/>
+                        &nbsp;ATAQUE ESPECIAL
+                      </S.LabelContent>
+                    }
+                    name="high"
+                    placeholder={"00"}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.high}
+                  />
+                  {errors.high && touched.high && errors.high}
+
+                  <InputNumber
+                    label={
+                      <S.LabelContent>
+                        <img src={speed} alt="Espada"/>
+                        &nbsp;VELOCIDADE
+                      </S.LabelContent>
+                    }
+                    name="high"
+                    placeholder={"00"}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.high}
+                  />
+                  {errors.high && touched.high && errors.high}
+
+                  <S.ButtonContainer>
+                    <Button
+                      text="CRIAR POKEMON"
+                      type="submit"
+                      disabled={isSubmitting}
+                    >
+                      Submit
+                    </Button>
+                  </S.ButtonContainer>
                 </S.Form>
               )}
             </Formik>
