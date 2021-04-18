@@ -285,9 +285,7 @@ const Sidebar = () => {
                       text="CRIAR POKEMON"
                       type="submit"
                       disabled={isSubmitting}
-                    >
-                      Submit
-                    </Button>
+                    />
                   </S.ButtonContainer>
                 </S.Form>
               )}
