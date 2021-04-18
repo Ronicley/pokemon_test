@@ -2,14 +2,32 @@ import React, {useEffect, useState} from "react";
 import * as Style from "./styled";
 import Types from "../PokemonTypes";
 import Divider from "../Divider";
+import PropTypes from "prop-types";
+import editIcon from "../../assets/images/editIcon.png";
+import checkIcon from "../../assets/images/checkIcon.png";
+import closeIcon from "../../assets/images/close.png";
+import {useDispatch} from "react-redux";
+import {updatePokemonName} from "../../pages/Map/mapSlice";
 
-// eslint-disable-next-line react/prop-types
-const Features = ({weight, height, hp, name, abilities, types}) => {
+const Features = ({weight, height, hp, name, abilities, types, isCaptured = false, id}) => {
   const [pokemonTypes, setPokemonTypes] = useState("");
+  const [showInput, setShowInput] = useState(false);
+  const [pokemonName, setPokemonName] = useState(name);
+
+  const dispatch = useDispatch();
+
+  const handleEditPokemonName = () => setShowInput(!showInput);
+
+  const handleCancelEditPokemonName = () => setShowInput(false);
+
+  const handleSavePokemon = () => {
+    dispatch(updatePokemonName({id: id, pokemonName}));
+    handleCancelEditPokemonName();
+  };
 
   useEffect(() => {
     let finalString = "";
-    // eslint-disable-next-line react/prop-types
+
     abilities.forEach((element) => {
       finalString += element.ability.name + ", ";
     });
@@ -19,7 +37,28 @@ const Features = ({weight, height, hp, name, abilities, types}) => {
 
   return (
     <Style.Container>
-      <Style.PokemonName>{name}</Style.PokemonName>
+      <Style.PokemonName>
+        {pokemonName}
+        {isCaptured && <Style.IconButton src={editIcon} onClick={handleEditPokemonName}/>}
+      </Style.PokemonName>
+      {
+        showInput && (
+          <Style.PokemonEditName>
+            <Style.InputTextCustom
+              name="pokemonName"
+              placeholder="Nome"
+              value={pokemonName}
+              onChange={(e) => setPokemonName(e.target.value)}
+            />
+            <Style.ButtonAction onClick={handleSavePokemon}>
+              <img src={checkIcon} alt={"Salvar"}/>
+            </Style.ButtonAction>
+            <Style.ButtonAction onClick={handleCancelEditPokemonName}>
+              <img src={closeIcon} alt={"Cancelar"} width={15}/>
+            </Style.ButtonAction>
+          </Style.PokemonEditName>
+        )
+      }
       <Style.Row>
         <Style.Column>
           <Style.Label>HP</Style.Label>
@@ -52,6 +91,17 @@ const Features = ({weight, height, hp, name, abilities, types}) => {
       </Style.Column>
     </Style.Container>
   );
+};
+
+Features.propTypes = {
+  weight: PropTypes.number,
+  height: PropTypes.number,
+  hp: PropTypes.number,
+  name: PropTypes.string,
+  abilities: PropTypes.array,
+  types: PropTypes.array,
+  isCaptured: PropTypes.bool,
+  id: PropTypes.number
 };
 
 export default Features;

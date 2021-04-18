@@ -7,9 +7,9 @@ import Modal from "../../components/Modal";
 import {useDispatch, useSelector} from "react-redux";
 import {
   selectPokemonCapturedDetails,
-  setPokemonCaptured,
-  selectMaxAmountPokemonsReached,
-  setPokemonCapturedDetails
+  setPokemonCapturedDetails,
+  selectPokemonList,
+  setPokemonList
 } from "./mapSlice";
 import {getRandomicPokemon} from "./MapService";
 import {useAlert} from "react-alert";
@@ -26,11 +26,11 @@ const MapPage = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const pokemonDetails = useSelector(selectPokemonCapturedDetails);
-  const pokemonFull = useSelector(selectMaxAmountPokemonsReached);
+  const pokemonList = useSelector(selectPokemonList);
 
   const handleCapturePokemon = () => {
     pokemon.captured = true;
-    dispatch(setPokemonCaptured(pokemon));
+    dispatch(setPokemonList(pokemon));
   };
 
   const openTip = () => setShowTip(true);
@@ -94,6 +94,8 @@ const MapPage = () => {
               name={pokemon.name}
               abilities={pokemon.abilities}
               types={pokemon.types}
+              isCaptured={!!pokemon?.captured}
+              id={pokemon.id}
             />
           )
         }
@@ -102,7 +104,7 @@ const MapPage = () => {
             icon={pokeball}
             onClick={
               () => {
-                if (!pokemonFull) {
+                if (pokemonList.length <= 5) {
                   handleCapturePokemon();
                   handleCloseModal();
                 } else {

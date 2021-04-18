@@ -3,9 +3,8 @@ import Button from "components/Button";
 import iconPlus from "assets/images/plus.png";
 import * as S from "./styled";
 import {
-  selectPokemonCaptured,
-  setMaxAmountPokemon,
-  setPokemonCapturedDetails
+  selectPokemonList,
+  setPokemonCapturedDetails,
 } from "../../pages/Map/mapSlice";
 import {useDispatch, useSelector} from "react-redux";
 import Modal from "../Modal";
@@ -26,7 +25,7 @@ const Sidebar = () => {
   const [openModal, setOpenModal] = useState(false);
   const [capturedPokemons, setCapturedPokemons] = useState([]);
   const [pokemonTypes, setPokemonTypes] = useState([]);
-  const pokemon = useSelector(selectPokemonCaptured);
+  const pokemonList = useSelector(selectPokemonList);
   const dispatch = useDispatch();
 
   const contactSchema = yup.object().shape({
@@ -45,12 +44,8 @@ const Sidebar = () => {
   const handleSetPokemonDetails = (pokemon) => dispatch(setPokemonCapturedDetails(pokemon));
 
   useEffect(() => {
-    if (capturedPokemons.length < 6) {
-      if (pokemon !== null) setCapturedPokemons([...capturedPokemons, pokemon]);
-    } else {
-      dispatch(setMaxAmountPokemon(true));
-    }
-  }, [pokemon]);
+    setCapturedPokemons(pokemonList);
+  }, [pokemonList]);
 
   useEffect(() => {
     let name = Object.keys(dictionaryPokemonTypes);

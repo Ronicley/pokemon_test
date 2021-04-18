@@ -1,10 +1,10 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import * as Style from "./styled";
 import closeIcon from "../../assets/images/close.png";
 import Loading from "../Loading";
 
-// eslint-disable-next-line react/prop-types
+
 const Modal = ({open = false, onClose, img, body, actions, loading = false}) => (
   open && (
     <Style.Container>
@@ -30,5 +30,13 @@ const Modal = ({open = false, onClose, img, body, actions, loading = false}) => 
   )
 );
 
+Modal.propTypes = {
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+  img: PropTypes.object,
+  body: PropTypes.element,
+  actions: PropTypes.element,
+  loading: PropTypes.bool
+};
 
 export default Modal;

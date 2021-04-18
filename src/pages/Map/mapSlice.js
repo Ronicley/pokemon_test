@@ -3,16 +3,26 @@ import {createSlice} from "@reduxjs/toolkit";
 export const mapSlice = createSlice({
   name: "map",
   initialState: {
-    pokemonCaptured: null,
-    maxAmountPokemonsReached: false,
+    pokemonList: [],
     pokemonCapturedDetails: null,
   },
   reducers: {
-    setPokemonCaptured: (state, action) => {
-      state.pokemonCaptured = action.payload;
+    setPokemonList: (state, action) => {
+      state.pokemonList.push(action.payload);
     },
-    setMaxAmountPokemon: (state, action) => {
-      state.maxAmountPokemonsReached = action.payload;
+    removePokemonFromList: (state, action) => {
+      state.pokemonList = state.pokemonList.filter((item) => item.id !== action.payload);
+    },
+    updatePokemonName: (state, action) => {
+      let {pokemonName, id} = action.payload;
+      state.pokemonList = state.pokemonList.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            name:pokemonName
+          };
+        }
+      });
     },
     setPokemonCapturedDetails: (state, action) => {
       state.pokemonCapturedDetails = action.payload;
@@ -20,12 +30,15 @@ export const mapSlice = createSlice({
   },
 });
 
-export const {setPokemonCaptured, setMaxAmountPokemon, setPokemonCapturedDetails} = mapSlice.actions;
-
-export const selectPokemonCaptured = state => state.map.pokemonCaptured;
-
-export const selectMaxAmountPokemonsReached = state => state.map.maxAmountPokemonsReached;
+export const {
+  setPokemonCapturedDetails,
+  setPokemonList,
+  removePokemonFromList,
+  updatePokemonName
+} = mapSlice.actions;
 
 export const selectPokemonCapturedDetails = state => state.map.pokemonCapturedDetails;
+
+export const selectPokemonList = state => state.map.pokemonList;
 
 export default mapSlice.reducer;

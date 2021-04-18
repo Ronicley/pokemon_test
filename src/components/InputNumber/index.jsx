@@ -1,9 +1,7 @@
 import React from "react";
-
-
+import PropTypes from "prop-types";
 import * as S from "./styled";
 
-// eslint-disable-next-line react/prop-types
 const InputNumber = ({ className, label, placeholder, name, suffix, onChange, value, onBlur }) => (
     <S.InputNumberWrapper className={className}>
         {label && <S.Label>{label}</S.Label>}
@@ -23,5 +21,16 @@ const InputNumber = ({ className, label, placeholder, name, suffix, onChange, va
         </S.InputContent>
     </S.InputNumberWrapper>
 );
+
+InputNumber.propTypes = {
+  className: PropTypes.string,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  name: PropTypes.string,
+  suffix: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.number,
+  onBlur: PropTypes.func
+};
 
 export default InputNumber;

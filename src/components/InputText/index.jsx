@@ -1,8 +1,7 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import * as S from "./styled";
 
-// eslint-disable-next-line react/prop-types
 const InputText = ({className, label, type, placeholder, name, onChange, onBlur, value}) => (
   <S.InputTextWrapper className={className}>
     {label && <S.Label>{label}</S.Label>}
@@ -16,5 +15,16 @@ const InputText = ({className, label, type, placeholder, name, onChange, onBlur,
     />
   </S.InputTextWrapper>
 );
+
+InputText.propTypes = {
+  className: PropTypes.string,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  onBlur: PropTypes.func
+};
 
 export default InputText;
