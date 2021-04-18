@@ -53,6 +53,7 @@ export const ModalContent = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 24px 24px 8px 8px;
+    padding-bottom: 80px;
 `;
 
 export const CloseButton = styled.img`
