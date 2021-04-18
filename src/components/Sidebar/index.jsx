@@ -14,6 +14,7 @@ import {Formik} from "formik";
 import InputText from "../InputText";
 import * as yup from "yup";
 import InputNumber from "../InputNumber";
+import Divider from "../Divider";
 
 const Sidebar = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -127,8 +128,7 @@ const Sidebar = () => {
                     value={values.altura}
                   />
                   {errors.altura && touched.altura && errors.altura}
-                  <S.SectionTitle>TIPO</S.SectionTitle>
-                  <S.SectionAbility>HABILIDADES</S.SectionAbility>
+                  <Divider text={"TIPO"}/>
                   <button type="submit" disabled={isSubmitting}>
                     Submit
                   </button>
